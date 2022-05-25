@@ -15,6 +15,17 @@ type author struct {
 	name string
 }
 
+func TestAssignValObjToVar(t *testing.T) {
+	a := author{
+		name: "x-man",
+	}
+	b := a
+	fmt.Printf("a: %v, b: %v\n", a, b)
+	fmt.Printf("&a: %p, &b: %p\n", &a, &b)
+	b.name = "batman"
+	fmt.Printf("a: %v, b: %v\n", a, b)
+}
+
 func TestNewBook(t *testing.T) {
 	theAuthor := author{
 		name: "peter",

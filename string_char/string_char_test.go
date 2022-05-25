@@ -1,25 +1,23 @@
 package string_char
 
 import (
+	"errors"
 	"fmt"
 	"testing"
 	"unicode/utf8"
 )
 
-func Test1CountCharsInStr(t *testing.T) {
+func TestCountBytesAndChars(t *testing.T) {
 	s := "Hello, 世界"
-	fmt.Println("len of bytes:", len(s))
-	fmt.Println("count of runes:", utf8.RuneCountInString(s))
-}
+	fmt.Println("byte count:", len(s))
+	fmt.Println("char/rune count:", utf8.RuneCountInString(s))
 
-func Test2CountCharsInStr(t *testing.T) {
-	s := "Hello, 世界"
-	n := 0
+	c := 0
 	//for _, _ = range s {
 	for range s {
-		n++
+		c++
 	}
-	fmt.Println("count of runes:", n)
+	fmt.Println("char/rune count:", c)
 }
 
 func Test1TraverseCharsInStr(t *testing.T) {
@@ -46,7 +44,7 @@ func Test2TraverseCharsInStr(t *testing.T) {
 func TestConvIntToRuneValue(t *testing.T) {
 	// Converting an integer value to a string interprets the integer as a rune value,
 	// and yields the UTF-8 representation of that rune.
-	fmt.Println(string(int32(65))) // "A", not 65
+	fmt.Println(string(int32(65)))     // "A", not 65
 	fmt.Println(string(int32(0x4eac))) // "京"
 
 	// If the rune is invalid, the replacement character is substituted
@@ -57,7 +55,7 @@ func TestDiffBetweenTwoChars(t *testing.T) {
 	s := "cd"
 	a := 'a'
 	for _, r := range s {
-		fmt.Printf("diff bwtween %c and %c: %d\n", a, r, r - a)
+		fmt.Printf("diff bwtween %c and %c: %d\n", a, r, r-a)
 	}
 }
 
@@ -76,5 +74,5 @@ func TestFindChar(t *testing.T) {
 func TestPrintChar(t *testing.T) {
 	ch := 'A'
 	fmt.Printf("%8b %d %c \n", ch, ch, ch)
+	errors.Is(nil, nil)
 }
-
